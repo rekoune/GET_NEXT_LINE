@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arekoune <arekoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 10:33:48 by arekoune          #+#    #+#             */
-/*   Updated: 2024/02/01 10:20:26 by arekoune         ###   ########.fr       */
+/*   Created: 2024/02/01 10:00:58 by arekoune          #+#    #+#             */
+/*   Updated: 2024/02/01 11:11:11 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	check_line(char *str)
 {
