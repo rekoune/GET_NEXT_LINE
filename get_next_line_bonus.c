@@ -6,13 +6,13 @@
 /*   By: arekoune <arekoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 10:33:45 by arekoune          #+#    #+#             */
-/*   Updated: 2024/02/01 10:37:41 by arekoune         ###   ########.fr       */
+/*   Updated: 2024/02/15 19:14:20 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int	ft_read(char **line, int fd)
+void	ft_read(char **line, int fd)
 {
 	int		nf;
 	int		num_read;
@@ -23,21 +23,20 @@ int	ft_read(char **line, int fd)
 	{
 		bufer = malloc(BUFFER_SIZE + 1);
 		if (!bufer)
-			return (clean(line));
+		{
+			free(*line);
+			*line = NULL;
+			return ;
+		}
 		num_read = read(fd, bufer, BUFFER_SIZE);
 		bufer[num_read] = '\0';
 		nf = check_line(bufer);
 		*line = str_join(*line, bufer);
 		if (!(*line))
-			return (0);
-		if (num_read <= 0)
-		{
-			if (num_read == 0)
-				return (0);
-			clean(line);
-		}
+			return ;
+		if (num_read == 0)
+			return ;
 	}
-	return (num_read);
 }
 
 char	*join_reste(char *line, char *reste)
@@ -74,7 +73,7 @@ char	*mini_reture_line(char *line, char **reture, int i)
 	j = 0;
 	*reture = malloc(i + 1);
 	if (!(*reture))
-		return (0);
+		return (NULL);
 	while (j < i)
 	{
 		(*reture)[j] = line[j];
@@ -92,14 +91,14 @@ char	*reture_line(char *line, char **reture)
 	i = 0;
 	j = 0;
 	if (!line)
-		return (*reture = 0);
+		return (*reture = NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (!line[i])
 		return (mini_reture_line(line, reture, i));
 	*reture = malloc(i + 2);
 	if (!(*reture))
-		return (0);
+		return (NULL);
 	while (j <= i)
 	{
 		(*reture)[j] = line[j];
@@ -114,19 +113,18 @@ char	*get_next_line(int fd)
 	static char	*line[OPEN_MAX];
 	char		*reture;
 	char		*reste;
-	int			num_read;
 
 	if (fd < 0 || fd > OPEN_MAX)
-		return (0);
+		return (NULL);
 	if (BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
 	{
 		free(line[fd]);
 		line[fd] = NULL;
 		return (NULL);
 	}
-	num_read = ft_read(&line[fd], fd);
+	ft_read(&line[fd], fd);
 	reste = reture_line(line[fd], &reture);
-	if ((num_read == 0 && (!line[fd] || !line[fd][0])) || !reste)
+	if (!reste || !line[fd][0])
 	{
 		free(line[fd]);
 		line[fd] = NULL;

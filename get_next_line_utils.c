@@ -6,7 +6,7 @@
 /*   By: arekoune <arekoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 10:33:48 by arekoune          #+#    #+#             */
-/*   Updated: 2024/02/01 10:20:26 by arekoune         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:47:24 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	str_len(char *str)
 	return (i);
 }
 
-char	*mini_join(char *s1, char *s2, char **str)
+char	*mini_join(char *s1, char *s2, char *str)
 {
 	int	i;
 	int	j;
@@ -49,15 +49,15 @@ char	*mini_join(char *s1, char *s2, char **str)
 	j = 0;
 	if (s1 != 0)
 		while (s1[i])
-			(*str)[j++] = s1[i++];
+			str[j++] = s1[i++];
 	i = 0;
 	if (s2 != 0)
 		while (s2[i])
-			(*str)[j++] = s2[i++];
-	(*str)[j] = 0;
+			str[j++] = s2[i++];
+	str[j] = 0;
 	free(s1);
 	free(s2);
-	return (*str);
+	return (str);
 }
 
 char	*str_join(char *s1, char *s2)
@@ -79,12 +79,5 @@ char	*str_join(char *s1, char *s2)
 		s2 = NULL;
 		return (NULL);
 	}
-	return (mini_join(s1, s2, &str));
-}
-
-int	clean(char **str)
-{
-	free(*str);
-	*str = 0;
-	return (0);
+	return (mini_join(s1, s2, str));
 }
