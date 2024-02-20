@@ -6,7 +6,7 @@
 /*   By: arekoune <arekoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 10:33:45 by arekoune          #+#    #+#             */
-/*   Updated: 2024/02/15 19:16:25 by arekoune         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:21:14 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,9 @@ char	*join_reste(char *line, char *reste)
 		str[len] = reste[len];
 		len++;
 	}
-	str[len] = 0;
+	str[len] = '\0';
 	free(line);
 	return (str);
-}
-
-char	*mini_reture_line(char *line, char **reture, int i)
-{
-	int	j;
-
-	j = 0;
-	*reture = malloc(i + 1);
-	if (!(*reture))
-		return (NULL);
-	while (j < i)
-	{
-		(*reture)[j] = line[j];
-		j++;
-	}
-	(*reture)[j] = 0;
-	return (&(line[i]));
 }
 
 char	*reture_line(char *line, char **reture)
@@ -95,7 +78,7 @@ char	*reture_line(char *line, char **reture)
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (!line[i])
-		return (mini_reture_line(line, reture, i));
+		i--;
 	*reture = malloc(i + 2);
 	if (!(*reture))
 		return (0);
@@ -104,7 +87,7 @@ char	*reture_line(char *line, char **reture)
 		(*reture)[j] = line[j];
 		j++;
 	}
-	(*reture)[j] = 0;
+	(*reture)[j] = '\0';
 	return (&(line[i + 1]));
 }
 

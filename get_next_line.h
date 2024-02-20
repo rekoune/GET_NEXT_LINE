@@ -6,7 +6,7 @@
 /*   By: arekoune <arekoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 10:33:42 by arekoune          #+#    #+#             */
-/*   Updated: 2024/02/14 11:11:35 by arekoune         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:20:00 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*join_reste(char *line, char *reste);
 char	*reture_line(char *line, char **reture);
 int		check_line(char *str);
 char	*str_join(char *s1, char *s2);
+char	*mini_join(char *s1, char *s2, char *str);
 int		str_len(char *str);
 
 #endif

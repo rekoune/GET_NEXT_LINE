@@ -6,7 +6,7 @@
 /*   By: arekoune <arekoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:00:58 by arekoune          #+#    #+#             */
-/*   Updated: 2024/02/14 15:05:08 by arekoune         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:19:45 by arekoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*mini_join(char *s1, char *s2, char *str)
 	if (s2 != 0)
 		while (s2[i])
 			str[j++] = s2[i++];
-	str[j] = 0;
+	str[j] = '\0';
 	free(s1);
 	free(s2);
 	return (str);
